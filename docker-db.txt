@@ -1,0 +1,16 @@
+Docker container
+
+$docker exec -it --user 1000 container-name sh/bash/node
+
+$psql -U user -W coursesdb
+--user and password from .yml
+
+$\d departments
+$\d+ users
+
+press q to exit!!!
+press ctrl+z to exit
+
+$exit      
+--to exit
+
