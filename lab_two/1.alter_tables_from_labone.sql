@@ -49,4 +49,8 @@ SET NOT NULL;
 ALTER TABLE authorizations 
 add primary key (id_authorization);
 
+
+
+
+
 ALTER TABLE authorizations  ADD CONSTRAINT FK_unique UNIQUE (userid);
