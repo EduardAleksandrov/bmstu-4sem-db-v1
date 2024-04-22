@@ -1,0 +1,9 @@
+Доступ к терминалу базы
+
+$docker exec -it mongo bash
+$mongosh
+
+use admin
+db.auth('root', 'example')
+use one
+show collections

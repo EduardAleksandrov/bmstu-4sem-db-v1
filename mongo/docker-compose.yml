@@ -1,0 +1,39 @@
+version: '3.7'
+
+volumes:
+  mongo-vl-labs:
+
+networks:
+  network-mongo-labs:
+    driver: bridge
+
+services:
+  mongo-labs:
+    image: mongo:5.0.9-focal
+    restart: unless-stopped
+    container_name: mongo-labs-db
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-vl-labs:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: dbmyproject
+    networks:
+      - network-mongo-labs
+
+  mongo-express-lab:
+    image: mongo-express:latest
+    restart: unless-stopped
+    container_name: mongo-express-lab
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo-labs-db:27017/
+    networks:
+      - network-mongo-labs
+    depends_on:
+      - mongo-labs
