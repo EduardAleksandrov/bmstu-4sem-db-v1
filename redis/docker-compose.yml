@@ -1,0 +1,23 @@
+version: '3.7'
+
+volumes:
+  redis-vl:
+
+networks:
+  redis-network:
+    driver: bridge
+
+services:
+  redis:
+    image: 'redis:7.0.3-alpine'
+    restart: unless-stopped
+    container_name: redis-container-db
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-vl:/data
+    networks:
+      - redis-network
+    environment:
+      - REDIS_DATABASES=16
+      - REDIS_PASSWORD=password
