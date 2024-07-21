@@ -1,4 +1,5 @@
 Подключиться к запущенному в контейнере redis
-пишем в терминале
+docker exec -it redis-container-db sh
 
+пишем в терминале
 $redis-cli

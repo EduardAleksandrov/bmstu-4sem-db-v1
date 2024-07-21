@@ -1,6 +1,6 @@
 Доступ к терминалу базы
 
-$docker exec -it mongo bash
+$docker exec -it mongo-labs-db bash
 $mongosh
 
 use admin
